@@ -3,67 +3,356 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>EgoVerse</title>
-
   <meta name="description" content="EgoVerse is an open ecosystem for learning robot behavior from egocentric human data." />
 
   <style>
-    body {
+    :root{
+      --bg0:#070a12;
+      --bg1:#0b1024;
+      --fg:#eef2ff;
+      --muted: rgba(238,242,255,.75);
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --stroke: rgba(255,255,255,.12);
+      --accent: #9ae6ff;
+      --accent2:#b8a7ff;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--fg);
+      background: radial-gradient(1200px 800px at 15% 15%, rgba(154,230,255,.12), transparent 60%),
+                  radial-gradient(1200px 800px at 85% 25%, rgba(184,167,255,.10), transparent 60%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    /* Background canvas */
+    #bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: .9;
+    }
+
+    /* Soft vignette + grain */
+    .vignette{
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(1200px 700px at 50% 30%, transparent 35%, rgba(0,0,0,.55) 100%);
+      mix-blend-mode: multiply;
+    }
+    .grain{
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: .08;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+
+    .wrap{
+      position: relative;
+      z-index: 3;
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 72px 22px;
+    }
+
+    .card{
+      width: min(920px, 100%);
+      border-radius: 20px;
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.04));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      padding: 44px 42px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .topline{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .mark{
+      width: 12px; height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 18px rgba(154,230,255,.35);
+      flex: 0 0 auto;
+    }
+    h1{
       margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Helvetica, Arial, sans-serif;
-      background: #ffffff;
-      color: #111111;
+      font-size: 56px;
+      letter-spacing: -1px;
+      line-height: 1.02;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 120px 32px;
-    }
-
-    h1 {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      letter-spacing: -0.5px;
-    }
-
-    p {
-      font-size: 20px;
+    .subtitle{
+      margin: 14px 0 0 0;
+      color: var(--muted);
+      font-size: 18px;
       line-height: 1.6;
-      max-width: 720px;
-      margin-bottom: 24px;
+      max-width: 72ch;
     }
 
-    .meta {
-      margin-top: 48px;
-      font-size: 14px;
-      color: #666666;
+    .pillrow{
+      margin-top: 22px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pill{
+      font-size: 13px;
+      color: rgba(238,242,255,.9);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+
+    .cta{
+      margin-top: 30px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    a.btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      text-decoration:none;
+      color: var(--fg);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: linear-gradient(180deg, var(--card2), rgba(255,255,255,.06));
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      user-select: none;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(154,230,255,.35);
+      background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
+    }
+
+    .foot{
+      margin-top: 26px;
+      color: rgba(238,242,255,.55);
+      font-size: 13px;
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.10);
+      padding-top: 18px;
+    }
+
+    @media (max-width: 640px){
+      .card{ padding: 28px 22px; border-radius: 18px; }
+      h1{ font-size: 42px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      #bg { display:none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>EgoVerse</h1>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-    <p>
-      EgoVerse is an open ecosystem for learning robot behavior from
-      large-scale egocentric human data.
-    </p>
+  <main class="wrap">
+    <section class="card">
+      <div class="topline">
+        <div class="mark"></div>
+        <div style="color: rgba(238,242,255,.7); font-size: 13px; letter-spacing: .12em; text-transform: uppercase;">
+          Under construction
+        </div>
+      </div>
 
-    <p>
-      Our goal is to enable scalable, reproducible, and embodiment-agnostic
-      robot learning by treating humans as a natural source of supervision.
-    </p>
+      <h1>EgoVerse</h1>
 
-    <div class="meta">
-      Website under construction.
-    </div>
-  </div>
+      <p class="subtitle">
+        An open ecosystem for learning robot behavior from large-scale egocentric human data.
+        Building toward scalable, reproducible, and embodiment-agnostic robot learning.
+      </p>
+
+      <div class="pillrow">
+        <div class="pill">Human-in-the-wild Data</div>
+        <div class="pill">Benchmarks + Protocols</div>
+        <div class="pill">Open Collaboration</div>
+      </div>
+
+      <div class="cta">
+        <!-- Replace these hrefs when you have them -->
+        <a class="btn" href="mailto:danfei@gatech.edu">
+          Contact
+        </a>
+      </div>
+
+      <div class="foot">
+        <div>© <span id="y"></span> EgoVerse</div>
+        <div style="opacity:.75;">egoverse.ai</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Particle-flow canvas background (no deps)
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d", { alpha: true });
+
+    const DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    let W = 0, H = 0;
+
+    function resize() {
+      W = Math.floor(window.innerWidth);
+      H = Math.floor(window.innerHeight);
+      canvas.width = Math.floor(W * DPR);
+      canvas.height = Math.floor(H * DPR);
+      canvas.style.width = W + "px";
+      canvas.style.height = H + "px";
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    // Deterministic-ish noise (cheap)
+    function hash2(x, y) {
+      // integer hash -> [0,1)
+      let n = (x * 374761393 + y * 668265263) ^ (x * y);
+      n = (n ^ (n >> 13)) * 1274126177;
+      n = (n ^ (n >> 16));
+      return (n >>> 0) / 4294967296;
+    }
+
+    // Simple curl-like field via finite differences of a scalar potential
+    function field(x, y, t) {
+      const s = 0.0022;        // spatial frequency
+      const tt = t * 0.00008;  // time
+      const ix = Math.floor((x + 4000 * tt) * s);
+      const iy = Math.floor((y - 3000 * tt) * s);
+
+      const a = hash2(ix, iy);
+      const b = hash2(ix + 1, iy);
+      const c = hash2(ix, iy + 1);
+
+      // pseudo-gradient
+      const dx = b - a;
+      const dy = c - a;
+
+      // rotate gradient (curl-ish)
+      const vx = -dy;
+      const vy = dx;
+      return { vx, vy };
+    }
+
+    const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+      // do nothing if user prefers reduced motion
+      // background is hidden via CSS
+    } else {
+      const particles = [];
+      const N = Math.round(Math.min(420, Math.max(220, (W * H) / 9000)));
+
+      function reset(p) {
+        p.x = Math.random() * W;
+        p.y = Math.random() * H;
+        p.vx = 0;
+        p.vy = 0;
+        p.life = 60 + Math.random() * 140;
+      }
+
+      for (let i = 0; i < N; i++) {
+        const p = {};
+        reset(p);
+        particles.push(p);
+      }
+
+      let last = performance.now();
+
+      function tick(now) {
+        const dt = Math.min(24, now - last);
+        last = now;
+
+        // Fade with slight persistence for trails
+        ctx.fillStyle = "rgba(7,10,18,0.12)";
+        ctx.fillRect(0, 0, W, H);
+
+        // Draw
+        ctx.lineWidth = 1;
+        ctx.globalCompositeOperation = "lighter";
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+
+          const f = field(p.x, p.y, now);
+          const speed = 140; // px/sec-ish scale
+
+          // integrate
+          p.vx = 0.92 * p.vx + f.vx * 0.10;
+          p.vy = 0.92 * p.vy + f.vy * 0.10;
+
+          const ox = p.x;
+          const oy = p.y;
+
+          p.x += p.vx * (dt / 16) * speed * 0.02;
+          p.y += p.vy * (dt / 16) * speed * 0.02;
+
+          p.life -= dt / 16;
+
+          // respawn if dead or out of bounds
+          if (p.life <= 0 || p.x < -20 || p.x > W + 20 || p.y < -20 || p.y > H + 20) {
+            reset(p);
+            continue;
+          }
+
+          // color varies with position
+          const u = p.x / W;
+          const v = p.y / H;
+          const r = Math.floor(120 + 80 * u);
+          const g = Math.floor(160 + 60 * (1 - v));
+          const b = Math.floor(220);
+          ctx.strokeStyle = `rgba(${r},${g},${b},0.10)`;
+
+          ctx.beginPath();
+          ctx.moveTo(ox, oy);
+          ctx.lineTo(p.x, p.y);
+          ctx.stroke();
+        }
+
+        ctx.globalCompositeOperation = "source-over";
+        requestAnimationFrame(tick);
+      }
+
+      // start with a clean frame
+      ctx.fillStyle = "rgba(7,10,18,1)";
+      ctx.fillRect(0, 0, W, H);
+
+      requestAnimationFrame(tick);
+    }
+  </script>
 </body>
 </html>
 
