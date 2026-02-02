@@ -493,6 +493,75 @@ h1{
   border-bottom-color: rgba(34,30,28,.5);
   border-bottom-style: solid;
 }
+
+/* Join Us CTA Card */
+.join-us-card{
+  margin-top: 32px;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, rgba(82, 120, 140, 0.12), rgba(120, 90, 70, 0.10));
+  border: 1px solid rgba(82, 120, 140, 0.2);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.join-us-content h3{
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: var(--ink);
+}
+.join-us-content p{
+  margin: 0;
+  color: rgba(34,30,28,.7);
+  font-size: 15px;
+}
+.btn-join{
+  background: linear-gradient(135deg, rgb(72, 110, 130), rgb(52, 85, 105));
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 14px rgba(52, 85, 105, 0.3);
+}
+.btn-join:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 85, 105, 0.4);
+}
+.btn-join .arrow{
+  font-size: 18px;
+  transition: transform 0.15s ease;
+}
+.btn-join:hover .arrow{
+  transform: translateX(3px);
+}
+
+/* Coming Soon Card */
+.card-coming-soon{
+  opacity: 0.7;
+  position: relative;
+}
+.badge-coming-soon{
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, rgba(140, 120, 90, 0.2), rgba(120, 100, 70, 0.15));
+  border: 1px solid rgba(140, 120, 90, 0.3);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgb(120, 100, 70);
+}
 .card p{ margin: 0 0 10px; color: rgba(34,30,28,.78); line-height: 1.6; }
 /* Card links, but do not affect button-like links */
 .card a:not(.btn){

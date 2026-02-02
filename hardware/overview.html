@@ -7,41 +7,8 @@
   <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>
 <body>
-  <!-- Header paths need ../ -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="../index.html">
-        <img src="../assets/img/egoverse-mark.svg" alt="EgoVerse" width="28" height="28" />
-        <div><div>EgoVerse</div><small>Egocentric human data for robot learning</small></div>
-      </a>
-
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
-        <span class="sr-only">Toggle navigation</span>
-        <span class="hamburger" aria-hidden="true"></span>
-      </button>
-
-      <nav class="nav" id="primary-nav" data-nav>
-        <a href="../index.html">EgoVerse</a>
-        <a href="../dataset.html">Dataset</a>
-        <a href="../code.html">Code</a>
-
-        <div class="dropdown" data-dropdown>
-          <button class="btn btn-muted" data-dropdown-btn aria-expanded="false">Hardware ▾</button>
-          <div class="dropdown-menu" role="menu">
-            <a href="./overview.html">Overview</a>
-            <a href="./project-aria-gen1.html">Project Aria (Gen 1)</a>
-            <a class="disabled" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
-              Project Aria Gen2 (Coming Soon)
-            </a>
-            <a href="./mecka-app.html">Mecka App</a>
-          </div>
-        </div>
-
-        <a href="../team.html">Team</a>
-        <a class="btn btn-primary" href="../dataset.html#access">Access dataset</a>
-      </nav>
-    </div>
-  </header>
+  <header class="site-header"></header>
+  <script src="../assets/js/nav.js"></script>
 
   <main>
     <section class="section">
@@ -58,14 +25,14 @@
             <a href="./project-aria-gen1.html">Details →</a>
           </div>
           <div class="card">
-            <h3>Industry rigs</h3>
-            <p>Custom wearable camera setups used by industry partners for scalable in-the-wild capture.</p>
-            <a href="../dataset.html#egoverse-i">How it fits →</a>
-          </div>
-          <div class="card">
             <h3>Mecka App</h3>
             <p>Phone-based iPhone pipeline for community-accessible capture.</p>
             <a href="./mecka-app.html">Details →</a>
+          </div>
+          <div class="card card-coming-soon">
+            <h3>Project Aria (Gen 2)</h3>
+            <p>Next-generation capture device with enhanced sensors and capabilities.</p>
+            <span class="muted">Coming soon</span>
           </div>
         </div>
       </div>
