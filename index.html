@@ -1,358 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EgoVerse</title>
-  <meta name="description" content="EgoVerse is an open ecosystem for learning robot behavior from egocentric human data." />
-
-  <style>
-    :root{
-      --bg0:#070a12;
-      --bg1:#0b1024;
-      --fg:#eef2ff;
-      --muted: rgba(238,242,255,.75);
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.09);
-      --stroke: rgba(255,255,255,.12);
-      --accent: #9ae6ff;
-      --accent2:#b8a7ff;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-    }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--fg);
-      background: radial-gradient(1200px 800px at 15% 15%, rgba(154,230,255,.12), transparent 60%),
-                  radial-gradient(1200px 800px at 85% 25%, rgba(184,167,255,.10), transparent 60%),
-                  linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
-    }
-
-    /* Background canvas */
-    #bg {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      opacity: .9;
-    }
-
-    /* Soft vignette + grain */
-    .vignette{
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        radial-gradient(1200px 700px at 50% 30%, transparent 35%, rgba(0,0,0,.55) 100%);
-      mix-blend-mode: multiply;
-    }
-    .grain{
-      position: fixed;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      opacity: .08;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-    }
-
-    .wrap{
-      position: relative;
-      z-index: 3;
-      min-height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 72px 22px;
-    }
-
-    .card{
-      width: min(920px, 100%);
-      border-radius: 20px;
-      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.04));
-      border: 1px solid var(--stroke);
-      box-shadow: var(--shadow);
-      padding: 44px 42px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .topline{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-    .mark{
-      width: 12px; height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 18px rgba(154,230,255,.35);
-      flex: 0 0 auto;
-    }
-    h1{
-      margin: 0;
-      font-size: 56px;
-      letter-spacing: -1px;
-      line-height: 1.02;
-    }
-
-    .subtitle{
-      margin: 14px 0 0 0;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.6;
-      max-width: 72ch;
-    }
-
-    .pillrow{
-      margin-top: 22px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .pill{
-      font-size: 13px;
-      color: rgba(238,242,255,.9);
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-    }
-
-    .cta{
-      margin-top: 30px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    a.btn{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      text-decoration:none;
-      color: var(--fg);
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: linear-gradient(180deg, var(--card2), rgba(255,255,255,.06));
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      user-select: none;
-    }
-    a.btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(154,230,255,.35);
-      background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
-    }
-
-    .foot{
-      margin-top: 26px;
-      color: rgba(238,242,255,.55);
-      font-size: 13px;
-      display:flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(255,255,255,.10);
-      padding-top: 18px;
-    }
-
-    @media (max-width: 640px){
-      .card{ padding: 28px 22px; border-radius: 18px; }
-      h1{ font-size: 42px; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      #bg { display:none; }
-    }
-  </style>
+  <meta name="description" content="EgoVerse: An egocentric human dataset and consortium-scale study for robot learning." />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 
 <body>
-  <canvas id="bg" aria-hidden="true"></canvas>
-  <div class="vignette" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">
+        <img src="./assets/img/egoverse-mark.svg" alt="EgoVerse" width="28" height="28" />
+        <div>
+          <div>EgoVerse</div>
+          <small>Egocentric human data for robot learning</small>
+        </div>
+      </a>
 
-  <main class="wrap">
-    <section class="card">
-      <div class="topline">
-        <div class="mark"></div>
-        <div style="color: rgba(238,242,255,.7); font-size: 13px; letter-spacing: .12em; text-transform: uppercase;">
-          Under construction
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="sr-only">Toggle navigation</span>
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" id="primary-nav" data-nav>
+        <a href="./index.html">EgoVerse</a>
+        <a href="./dataset.html">Dataset</a>
+        <a href="./code.html">Code</a>
+
+        <div class="dropdown" data-dropdown>
+          <button class="btn btn-muted" data-dropdown-btn aria-expanded="false">
+            Hardware ▾
+          </button>
+          <div class="dropdown-menu" role="menu" aria-label="Hardware menu">
+            <a href="./hardware/overview.html">Overview</a>
+            <a href="./hardware/project-aria-gen1.html">Project Aria (Gen 1)</a>
+            <a class="disabled" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
+              Project Aria Gen2 (Coming Soon)
+            </a>
+            <a href="./hardware/mecka-app.html">Mecka App</a>
+          </div>
+        </div>
+
+        <a href="./team.html">Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: large coalition video -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">Capture • Dataset • Evaluation</p>
+          <h1>EgoVerse: Egocentric human data from around the world, built for robot learning.</h1>
+          <p class="lede">
+            EgoVerse is a collaborative framework that unifies egocentric capture, dataset curation, and a
+            consortium-scale evaluation study of human-to-robot transfer.
+          </p>
+
+          <div class="row">
+            <a class="btn btn-primary" href="./dataset.html#access">Dataset browser</a>
+            <a class="btn" href="./code.html">Install + Code</a>
+            <a class="btn" href="./team.html">Partner Institutes</a>
+          </div>
+
+          <p class="small" style="margin-top:12px;">
+            Replace the hero video with a “coalition” montage that shows cross-lab and industry capture setups,
+            plus robot rollouts.
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <!-- Option A: self-hosted video -->
+          <video class="hero-video" autoplay muted loop playsinline poster="./assets/img/hero-poster.jpg">
+            <source src="./assets/video/coalition.mp4" type="video/mp4" />
+          </video>
+
+          <!-- Option B: embed instead (recommended). Uncomment and remove the <video> block above.
+          <iframe class="hero-video" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=1"
+            title="EgoVerse coalition video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          -->
+
+          <div class="hero-meta">
+            <span class="pill">Coalition montage</span>
+            <span class="pill">Cross-lab capture</span>
+            <span class="pill">Robot evaluation</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <h1>EgoVerse</h1>
+    <!-- Partner institute evaluation videos -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Real-World Evaluations</h2>
+          <p class="muted">By Partner Institutes</p>
+        </div>
 
-      <p class="subtitle">
-        An open ecosystem for learning robot behavior from large-scale egocentric human data.
-        Building toward scalable, reproducible, and embodiment-agnostic robot learning.
-      </p>
+        <div class="video-grid">
+          <div class="video-tile">
+            <video muted controls playsinline poster="./assets/img/placeholder.jpg">
+              <source src="./assets/video/eval_partner_1.mp4" type="video/mp4" />
+            </video>
+            <div class="caption">
+              <strong>Georgia Tech (RL2)</strong>
+              <span>Task: object-in-container • ID/OOD</span>
+            </div>
+          </div>
 
-      <div class="pillrow">
-        <div class="pill">Human-in-the-wild Data</div>
-        <div class="pill">Benchmarks + Protocols</div>
-        <div class="pill">Open Collaboration</div>
+          <div class="video-tile">
+            <video muted controls playsinline poster="./assets/img/placeholder.jpg">
+              <source src="./assets/video/eval_partner_2.mp4" type="video/mp4" />
+            </video>
+            <div class="caption">
+              <strong>Stanford University (REAL Lab)</strong>
+              <span>Task: cup-on-saucer • bimanual precision</span>
+            </div>
+          </div>
+
+          <div class="video-tile">
+            <video muted controls playsinline poster="./assets/img/placeholder.jpg">
+              <source src="./assets/video/eval_partner_3.mp4" type="video/mp4" />
+            </video>
+            <div class="caption">
+              <strong>UC San Diego (Wang Lab)</strong>
+              <span>Task: bag-grocery • long-horizon</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="small" style="margin-top:10px;">
+          If you want 6–9 tiles, duplicate the blocks. Keep a fixed aspect ratio and consistent titles.
+        </p>
       </div>
+    </section>
 
-      <div class="cta">
-        <!-- Replace these hrefs when you have them -->
-        <a class="btn" href="mailto:danfei@gatech.edu">
-          Contact
-        </a>
-      </div>
+    <!-- Dataset stats -->
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="section-head">
+          <h2>Dataset snapshot</h2>
+          <p class="muted">Headline stats from the current release.</p>
+        </div>
 
-      <div class="foot">
-        <div>© <span id="y"></span> EgoVerse</div>
-        <div style="opacity:.75;">egoverse.ai</div>
+        <div class="stats" aria-label="EgoVerse dataset statistics">
+          <div class="stat">
+            <div class="num">1,362</div>
+            <div class="label">Hours of human demos</div>
+          </div>
+          <div class="stat">
+            <div class="num">~80k</div>
+            <div class="label">Episodes</div>
+          </div>
+          <div class="stat">
+            <div class="num">1,965</div>
+            <div class="label">Tasks</div>
+          </div>
+          <div class="stat">
+            <div class="num">240</div>
+            <div class="label">Scenes</div>
+          </div>
+          <div class="stat">
+            <div class="num">2,087</div>
+            <div class="label">Unique demonstrators</div>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-top:14px;">
+          <div class="card">
+            <h3>EgoVerse-A</h3>
+            <p>Standardized protocols mirrored across academic labs for reproducible analysis.</p>
+            <a href="./dataset.html#egoverse-a">Learn more →</a>
+          </div>
+          <div class="card">
+            <h3>EgoVerse-I</h3>
+            <p>Industry stream optimized for scale, diversity, and dense annotations.</p>
+            <a href="./dataset.html#egoverse-i">Learn more →</a>
+          </div>
+          <div class="card">
+            <h3>EgoDB</h3>
+            <p>Continuous ingestion, unified storage, and a web viewer for browsing and syncing subsets.</p>
+            <a href="./dataset.html#egodb">Learn more →</a>
+          </div>
+        </div>
+
+        <p class="small" style="margin-top:10px;">
+          Update these numbers per release. The values above match the draft paper snapshot.
+        </p>
       </div>
     </section>
   </main>
 
-  <script>
-    // Year
-    document.getElementById("y").textContent = new Date().getFullYear();
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div style="font-weight:850;">EgoVerse</div>
+        <div class="small">© <span id="year"></span> EgoVerse Consortium</div>
+      </div>
+      <div class="footer-links">
+        <a href="./dataset.html">Dataset</a>
+        <a href="./code.html">Code</a>
+        <a href="./team.html">Team</a>
+      </div>
+    </div>
+  </footer>
 
-    // Particle-flow canvas background (no deps)
-    const canvas = document.getElementById("bg");
-    const ctx = canvas.getContext("2d", { alpha: true });
-
-    const DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-    let W = 0, H = 0;
-
-    function resize() {
-      W = Math.floor(window.innerWidth);
-      H = Math.floor(window.innerHeight);
-      canvas.width = Math.floor(W * DPR);
-      canvas.height = Math.floor(H * DPR);
-      canvas.style.width = W + "px";
-      canvas.style.height = H + "px";
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    // Deterministic-ish noise (cheap)
-    function hash2(x, y) {
-      // integer hash -> [0,1)
-      let n = (x * 374761393 + y * 668265263) ^ (x * y);
-      n = (n ^ (n >> 13)) * 1274126177;
-      n = (n ^ (n >> 16));
-      return (n >>> 0) / 4294967296;
-    }
-
-    // Simple curl-like field via finite differences of a scalar potential
-    function field(x, y, t) {
-      const s = 0.0022;        // spatial frequency
-      const tt = t * 0.00008;  // time
-      const ix = Math.floor((x + 4000 * tt) * s);
-      const iy = Math.floor((y - 3000 * tt) * s);
-
-      const a = hash2(ix, iy);
-      const b = hash2(ix + 1, iy);
-      const c = hash2(ix, iy + 1);
-
-      // pseudo-gradient
-      const dx = b - a;
-      const dy = c - a;
-
-      // rotate gradient (curl-ish)
-      const vx = -dy;
-      const vy = dx;
-      return { vx, vy };
-    }
-
-    const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) {
-      // do nothing if user prefers reduced motion
-      // background is hidden via CSS
-    } else {
-      const particles = [];
-      const N = Math.round(Math.min(420, Math.max(220, (W * H) / 9000)));
-
-      function reset(p) {
-        p.x = Math.random() * W;
-        p.y = Math.random() * H;
-        p.vx = 0;
-        p.vy = 0;
-        p.life = 60 + Math.random() * 140;
-      }
-
-      for (let i = 0; i < N; i++) {
-        const p = {};
-        reset(p);
-        particles.push(p);
-      }
-
-      let last = performance.now();
-
-      function tick(now) {
-        const dt = Math.min(24, now - last);
-        last = now;
-
-        // Fade with slight persistence for trails
-        ctx.fillStyle = "rgba(7,10,18,0.12)";
-        ctx.fillRect(0, 0, W, H);
-
-        // Draw
-        ctx.lineWidth = 1;
-        ctx.globalCompositeOperation = "lighter";
-
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-
-          const f = field(p.x, p.y, now);
-          const speed = 140; // px/sec-ish scale
-
-          // integrate
-          p.vx = 0.92 * p.vx + f.vx * 0.10;
-          p.vy = 0.92 * p.vy + f.vy * 0.10;
-
-          const ox = p.x;
-          const oy = p.y;
-
-          p.x += p.vx * (dt / 16) * speed * 0.02;
-          p.y += p.vy * (dt / 16) * speed * 0.02;
-
-          p.life -= dt / 16;
-
-          // respawn if dead or out of bounds
-          if (p.life <= 0 || p.x < -20 || p.x > W + 20 || p.y < -20 || p.y > H + 20) {
-            reset(p);
-            continue;
-          }
-
-          // color varies with position
-          const u = p.x / W;
-          const v = p.y / H;
-          const r = Math.floor(120 + 80 * u);
-          const g = Math.floor(160 + 60 * (1 - v));
-          const b = Math.floor(220);
-          ctx.strokeStyle = `rgba(${r},${g},${b},0.10)`;
-
-          ctx.beginPath();
-          ctx.moveTo(ox, oy);
-          ctx.lineTo(p.x, p.y);
-          ctx.stroke();
-        }
-
-        ctx.globalCompositeOperation = "source-over";
-        requestAnimationFrame(tick);
-      }
-
-      // start with a clean frame
-      ctx.fillStyle = "rgba(7,10,18,1)";
-      ctx.fillRect(0, 0, W, H);
-
-      requestAnimationFrame(tick);
-    }
-  </script>
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>
-

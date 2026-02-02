@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EgoVerse | Dataset</title>
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <!-- Copy header from index.html exactly -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">
+        <img src="./assets/img/egoverse-mark.svg" alt="EgoVerse" width="28" height="28" />
+        <div>
+          <div>EgoVerse</div>
+          <small>Egocentric human data for robot learning</small>
+        </div>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="sr-only">Toggle navigation</span>
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" id="primary-nav" data-nav>
+        <a href="./index.html">EgoVerse</a>
+        <a href="./dataset.html">Dataset</a>
+        <a href="./code.html">Code</a>
+
+        <div class="dropdown" data-dropdown>
+          <button class="btn btn-muted" data-dropdown-btn aria-expanded="false">Hardware ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a href="./hardware/overview.html">Overview</a>
+            <a href="./hardware/project-aria-gen1.html">Project Aria (Gen 1)</a>
+            <a class="disabled" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
+              Project Aria Gen2 (Coming Soon)
+            </a>
+            <a href="./hardware/mecka-app.html">Mecka App</a>
+          </div>
+        </div>
+
+        <a href="./team.html">Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Dataset</h2>
+          <p class="muted">What’s in the release, how it is structured, and how to access it.</p>
+        </div>
+
+        <div class="card" id="access">
+          <h3>Access</h3>
+          <p>
+            Put your official links here. Keep these buttons prominent.
+          </p>
+          <div class="row">
+            <a class="btn btn-primary" href="REPLACE_WITH_DATASET_BROWSER_URL">Dataset browser</a>
+            <a class="btn" href="REPLACE_WITH_GITHUB_REPO_URL">GitHub codebase</a>
+            <a class="btn" href="REPLACE_WITH_PAPER_URL">Paper</a>
+          </div>
+          <p class="small" style="margin-top:10px;">
+            If access is gated, link to an access request form and state expected approval criteria.
+          </p>
+        </div>
+
+        <div class="grid-3" style="margin-top:14px;">
+          <div class="card" id="egoverse-a">
+            <h3>EgoVerse-A</h3>
+            <p>
+              Controlled, standardized cross-lab collection for reproducibility. Six flagship tasks and structured
+              axes of diversity.
+            </p>
+          </div>
+          <div class="card" id="egoverse-i">
+            <h3>EgoVerse-I</h3>
+            <p>
+              Industry-driven stream optimized for scale and visual/task diversity, with denser language and context tags.
+            </p>
+          </div>
+          <div class="card" id="egodb">
+            <h3>EgoDB</h3>
+            <p>
+              Continuous ingestion, indexing, and a web viewer. Users sync filtered subsets for local training.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3>Signals and annotations</h3>
+          <p>
+            Egocentric RGB video, head motion, 3D hand pose signals, and task descriptions, with annotation density
+            differing across components.
+          </p>
+          <p class="small">
+            Replace with your exact schema bullets and a link to the dataset spec in the repo.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div style="font-weight:850;">EgoVerse</div>
+        <div class="small">© <span id="year"></span> EgoVerse Consortium</div>
+      </div>
+      <div class="footer-links">
+        <a href="./index.html">Home</a>
+        <a href="./code.html">Code</a>
+        <a href="./team.html">Team</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

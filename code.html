@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EgoVerse | Code</title>
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <!-- Copy header from index.html exactly -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">
+        <img src="./assets/img/egoverse-mark.svg" alt="EgoVerse" width="28" height="28" />
+        <div><div>EgoVerse</div><small>Egocentric human data for robot learning</small></div>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="sr-only">Toggle navigation</span>
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" id="primary-nav" data-nav>
+        <a href="./index.html">EgoVerse</a>
+        <a href="./dataset.html">Dataset</a>
+        <a href="./code.html">Code</a>
+
+        <div class="dropdown" data-dropdown>
+          <button class="btn btn-muted" data-dropdown-btn aria-expanded="false">Hardware ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a href="./hardware/overview.html">Overview</a>
+            <a href="./hardware/project-aria-gen1.html">Project Aria (Gen 1)</a>
+            <a class="disabled" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
+              Project Aria Gen2 (Coming Soon)
+            </a>
+            <a href="./hardware/mecka-app.html">Mecka App</a>
+          </div>
+        </div>
+
+        <a href="./team.html">Team</a>
+        <a class="btn btn-primary" href="REPLACE_WITH_GITHUB_REPO_URL">GitHub repo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Code</h2>
+          <p class="muted">Installation, dataset access tooling, and evaluation harness.</p>
+        </div>
+
+        <div class="card">
+          <h3>Repository</h3>
+          <p><a href="REPLACE_WITH_GITHUB_REPO_URL">REPLACE_WITH_GITHUB_REPO_URL</a></p>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3>Quick install</h3>
+          <p class="small">Replace these commands to match your actual repo. Keep them minimal and tested.</p>
+          <pre style="overflow:auto; margin:0; padding:14px; border:1px solid var(--line); border-radius:16px; background:rgba(34,30,28,.02);">
+# Recommended: uv or conda. Example with venv:
+python -m venv .venv
+source .venv/bin/activate
+
+pip install -U pip
+pip install egoverse  # or: pip install -e .
+          </pre>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3>Dataset sync (example)</h3>
+          <pre style="overflow:auto; margin:0; padding:14px; border:1px solid var(--line); border-radius:16px; background:rgba(34,30,28,.02);">
+# Example: sync a filtered subset defined by a config file
+egoverse sync --config configs/fold_clothes_small.yaml --out data/egoverse
+          </pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div style="font-weight:850;">EgoVerse</div>
+        <div class="small">© <span id="year"></span> EgoVerse Consortium</div>
+      </div>
+      <div class="footer-links">
+        <a href="./dataset.html">Dataset</a>
+        <a href="./team.html">Team</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
