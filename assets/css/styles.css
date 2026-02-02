@@ -262,6 +262,23 @@ h1{
   margin: 0 0 18px;
   max-width: 60ch;
 }
+.paper-link{
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+.paper-link a{
+  color: var(--link);
+  font-weight: 650;
+  font-size: 18px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink-14);
+  padding-bottom: 2px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.paper-link a:hover{
+  color: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
 .hero-card{
   border: 1px solid var(--line);
   background: var(--paper-65);
