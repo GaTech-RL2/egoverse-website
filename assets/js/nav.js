@@ -22,9 +22,9 @@
       label: 'Hardware',
       items: [
         { label: 'Overview', href: 'hardware/overview.html' },
-        { label: 'Project Aria (Gen 1)', href: 'hardware/project-aria-gen1.html' },
-        { label: 'Project Aria Gen2 (Coming Soon)', href: null, disabled: true },
-        { label: 'Mecka App', href: 'hardware/mecka-app.html' }
+        { label: 'Project Aria Gen1', href: 'hardware/project-aria-gen1.html' },
+        { label: 'Mecka App', href: 'hardware/mecka-app.html' },
+        { label: 'Project Aria Gen2 (Coming Soon)', href: null, disabled: true }
       ]
     },
     team: { label: 'Team', href: 'team.html' }
