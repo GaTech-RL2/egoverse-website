@@ -121,15 +121,15 @@ const TEAM_DATA = {
       ]
     },
     {
-      "name": "Meta (Project Aria Team)",
+      "name": "Meta (Project Aria)",
       "website": "https://www.projectaria.com/",
       "websiteLabel": "projectaria.com",
       "roles": [
         {
           "title": "Leads",
           "members": [
-            { "name": "James Fort", "email": "jamesfort@meta.com", "url": null },
-            { "name": "Richard Newcombe", "email": "newcombe@meta.com", "url": null }
+            { "name": "James Fort", "url": null },
+            { "name": "Richard Newcombe", "url": null }
           ]
         }
       ]
@@ -142,8 +142,8 @@ const TEAM_DATA = {
         {
           "title": "Leads",
           "members": [
-            { "name": "Josh Gao", "email": "josh@mecka.ai", "url": null },
-            { "name": "Jason Chong", "email": "jason@mecka.ai", "url": null }
+            { "name": "Josh Gao", "url": null },
+            { "name": "Jason Chong", "url": null }
           ]
         }
       ]
@@ -156,8 +156,18 @@ const TEAM_DATA = {
         {
           "title": "Leads",
           "members": [
-            { "name": "Garrett Matsuda", "email": "garrett.matsuda@scale.com", "url": null },
-            { "name": "Aseem Doriwala", "email": "aseem.doriwala@scale.com", "url": null }
+            { "name": "Garrett Matsuda", "url": null },
+            { "name": "Aseem Doriwala", "url": null }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual Contributors",
+      "roles": [
+        {
+          "title": "Contributors",
+          "members": [
           ]
         }
       ]

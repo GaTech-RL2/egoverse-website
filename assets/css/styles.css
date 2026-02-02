@@ -255,12 +255,31 @@ h1{
   line-height: 1.02;
   margin: 0 0 12px;
 }
+.hero-tagline{
+  display: block;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.35;
+}
 .lede{
   color: var(--ink-78);
   font-size: 16px;
   line-height: 1.6;
   margin: 0 0 18px;
   max-width: 60ch;
+}
+.lede a{
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-14);
+  text-underline-offset: 2px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.lede a:hover{
+  color: var(--accent-strong);
+  text-decoration-color: var(--accent-strong);
 }
 .paper-link{
   margin-top: 16px;
