@@ -312,7 +312,7 @@ h1{
 }
 
 /* Cards */
-.grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: start; }
 .card{
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -320,7 +320,179 @@ h1{
   box-shadow: 0 10px 35px rgba(34,30,28,.08);
   padding: 18px;
 }
-.card h3{ margin: 0 0 8px; }
+.card h3{ margin: 0; }
+
+/* Collapsible cards */
+.card-collapsible{
+  padding: 0;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  cursor: pointer;
+  user-select: none;
+}
+.card-header:hover{
+  background: rgba(34,30,28,.02);
+}
+.card-header h3{
+  margin: 0;
+}
+.expand-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(34,30,28,.03);
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+.expand-btn:hover{
+  background: rgba(34,30,28,.06);
+}
+.expand-icon{
+  display: block;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+.card-collapsible.is-expanded{
+  box-shadow: 0 12px 40px rgba(34,30,28,.12);
+  border-color: rgba(34,30,28,.12);
+}
+.card-collapsible.is-expanded .expand-icon{
+  transform: rotate(45deg);
+}
+.card-body{
+  display: none;
+  padding: 16px 18px 18px;
+  border-top: 1px solid var(--line);
+  animation: fadeSlideIn 0.25s ease;
+}
+.card-collapsible.is-expanded .card-body{
+  display: block;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card website link */
+.card-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, rgba(34,30,28,.04), rgba(34,30,28,.08));
+  border: 1px solid rgba(34,30,28,.08);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.card-link:hover{
+  background: linear-gradient(135deg, rgba(34,30,28,.06), rgba(34,30,28,.10));
+  border-color: rgba(34,30,28,.14);
+  transform: translateY(-1px);
+}
+.link-icon{
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Role blocks inside cards */
+.role-block{
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  background: rgba(34,30,28,.02);
+  border-radius: 12px;
+  border: 1px solid rgba(34,30,28,.04);
+}
+.role-block:last-child{
+  margin-bottom: 0;
+}
+.role-title{
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(34,30,28,.06);
+}
+.people-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.people-list li{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(251,248,247,.9);
+  border: 1px solid rgba(34,30,28,.08);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.people-list li:hover{
+  background: rgba(251,248,247,1);
+  border-color: rgba(34,30,28,.12);
+}
+.mailto{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgba(34,30,28,.06);
+  border-radius: 50%;
+  transition: background 0.15s ease;
+}
+.mailto:hover{
+  background: rgba(34,30,28,.12);
+}
+.mail-icon{
+  font-size: 11px;
+  line-height: 1;
+}
+.person-link{
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(34,30,28,.3);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.person-link:hover{
+  color: rgb(80, 70, 65);
+  border-bottom-color: rgba(34,30,28,.5);
+  border-bottom-style: solid;
+}
 .card p{ margin: 0 0 10px; color: rgba(34,30,28,.78); line-height: 1.6; }
 /* Card links, but do not affect button-like links */
 .card a:not(.btn){
@@ -400,6 +572,7 @@ h1{
 /* Star icon for special roles */
 .star-icon{
   color: rgb(180, 140, 60);
-  font-size: 0.9em;
-  margin-right: 4px;
+  font-size: 1em;
+  margin-right: 2px;
+  vertical-align: middle;
 }
