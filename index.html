@@ -18,9 +18,9 @@
       <div class="container hero-grid">
         <div>
           <p class="kicker">Capture • Dataset • Evaluation</p>
-          <h1>EgoVerse<span class="hero-tagline">Egocentric human data from around the world, built for robot learning.</span></h1>
+          <h1>EgoVerse<span class="hero-tagline"> Human data from around the world, built for robot learning.</span></h1>
           <p class="lede">
-            EgoVerse is an ecosystem for curating, accessing, and learning from egocentric human data for robot learning. It is a "living" dataset, continuously expanded by the <a href="./team.html">consortium</a>, and driven by a research community advancing rigorous studies of human-to-robot transfer across tasks and embodiments.
+            EgoVerse is an ecosystem for curating, accessing, and learning from human data for robot learning. It is a "living" dataset, continuously expanded by the <a href="./team.html">consortium</a>, and driven by a research community advancing rigorous studies of human-to-robot transfer across tasks and embodiments.
           <div class="row">
             <a class="btn btn-primary" href="./dataset.html#access">Dataset browser</a>
             <a class="btn" href="./code.html">Install + Code</a>
@@ -103,40 +103,49 @@
       </div>
     </section>
 
-    <!-- Dataset stats -->
+    <!-- Global Data Collection + Dataset Stats -->
     <section class="section" style="padding-top:0;">
       <div class="container">
         <div class="section-head">
-          <h2>Dataset snapshot</h2>
-          <p class="muted">Headline stats from the current release.</p>
+          <h2>Global Data Collection</h2>
+          <p class="muted">Data from around the world, continuously growing.</p>
         </div>
 
-        <div class="stats" aria-label="EgoVerse dataset statistics">
-          <div class="stat">
-            <div class="num">1,362</div>
-            <div class="label">Hours of human demos</div>
+        <div class="globe-stats-grid">
+          <div class="globe-container">
+            <div id="globe"></div>
+            <div id="globe-tooltip" class="globe-tooltip"></div>
           </div>
-          <div class="stat">
-            <div class="num">~80k</div>
-            <div class="label">Episodes</div>
-          </div>
-          <div class="stat">
-            <div class="num">1,965</div>
-            <div class="label">Tasks</div>
-          </div>
-          <div class="stat">
-            <div class="num">240</div>
-            <div class="label">Scenes</div>
-          </div>
-          <div class="stat">
-            <div class="num">2,087</div>
-            <div class="label">Unique demonstrators</div>
+
+          <div class="stats-panel">
+            <h3>Dataset Snapshot</h3>
+            <div class="stats-vertical" aria-label="EgoVerse dataset statistics">
+              <div class="stat-row">
+                <div class="stat-num">1,362</div>
+                <div class="stat-label">Hours of human demos</div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-num">~80k</div>
+                <div class="stat-label">Episodes</div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-num">1,965</div>
+                <div class="stat-label">Tasks</div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-num">240</div>
+                <div class="stat-label">Scenes</div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-num">2,087</div>
+                <div class="stat-label">Unique demonstrators</div>
+              </div>
+            </div>
+            <p class="small" style="margin-top:14px;">
+              Stats from the current release.
+            </p>
           </div>
         </div>
-
-        <p class="small" style="margin-top:14px;">
-          Update these numbers per release. The values above match the draft paper snapshot.
-        </p>
       </div>
     </section>
   </main>
@@ -156,5 +165,8 @@
   </footer>
 
   <script src="./assets/js/main.js"></script>
+  <script src="https://unpkg.com/globe.gl"></script>
+  <script src="./assets/data/globe-locations.js"></script>
+  <script src="./assets/js/globe.js"></script>
 </body>
 </html>

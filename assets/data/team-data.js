@@ -126,7 +126,7 @@ const TEAM_DATA = {
       "websiteLabel": "projectaria.com",
       "roles": [
         {
-          "title": "Leads",
+          "title": "Contributors",
           "members": [
             { "name": "James Fort", "url": null },
             { "name": "Richard Newcombe", "url": null }
@@ -140,7 +140,7 @@ const TEAM_DATA = {
       "websiteLabel": "mecka.ai",
       "roles": [
         {
-          "title": "Leads",
+          "title": "Contributors",
           "members": [
             { "name": "Josh Gao", "url": null },
             { "name": "Jason Chong", "url": null }
@@ -154,7 +154,7 @@ const TEAM_DATA = {
       "websiteLabel": "scale.com",
       "roles": [
         {
-          "title": "Leads",
+          "title": "Contributors",
           "members": [
             { "name": "Garrett Matsuda", "url": null },
             { "name": "Aseem Doriwala", "url": null }
