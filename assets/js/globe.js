@@ -28,21 +28,19 @@
       .showAtmosphere(true)
       .atmosphereColor('rgba(120, 100, 180, 0.25)')
       .atmosphereAltitude(0.15)
-      // Use labels for locations with contribution-based sizing
-      .labelsData(GLOBE_LOCATIONS)
-      .labelLat('lat')
-      .labelLng('lng')
-      .labelText('name')
-      .labelSize(d => Math.sqrt(d.contribution / maxContribution) * 1.2 + 0.3)
-      .labelDotRadius(d => Math.sqrt(d.contribution / maxContribution) * 0.5 + 0.15)
-      .labelColor(() => 'rgba(180, 160, 220, 0.9)')
-      .labelResolution(2)
-      .labelAltitude(0.01)
-      .onLabelHover((label) => {
-        globeContainer.style.cursor = label ? 'pointer' : 'grab';
+      // Use points for locations with contribution-based sizing
+      .pointsData(GLOBE_LOCATIONS)
+      .pointLat('lat')
+      .pointLng('lng')
+      .pointAltitude(0.01)
+      .pointRadius(d => Math.sqrt(d.contribution / maxContribution) * 0.6 + 0.12)
+      .pointColor(() => 'rgba(180, 160, 220, 0.85)')
+      .pointsMerge(false)
+      .onPointHover((point) => {
+        globeContainer.style.cursor = point ? 'pointer' : 'grab';
         
-        if (label && tooltip) {
-          tooltip.innerHTML = `<strong>${label.name}</strong><br><span style="color: var(--muted)">${label.contribution} hours</span>`;
+        if (point && tooltip) {
+          tooltip.innerHTML = `<strong>${point.name}</strong><br><span style="color: var(--muted)">${point.contribution} contributions</span>`;
           tooltip.style.display = 'block';
         } else if (tooltip) {
           tooltip.style.display = 'none';
