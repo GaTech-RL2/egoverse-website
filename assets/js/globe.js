@@ -53,7 +53,7 @@
       (globeContainer);
 
     // Set initial point of view (show Americas/Europe)
-    globe.pointOfView({ lat: 30, lng: -20, altitude: 2.2 });
+    globe.pointOfView({ lat: 30, lng: -20, altitude: 1.5 });
 
     // Auto-rotate
     globe.controls().autoRotate = true;
