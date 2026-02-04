@@ -699,6 +699,7 @@ h1{
 .btn-join:hover{
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(75, 68, 115, 0.4);
+  color: var(--accent-dark);
 }
 .btn-join .arrow{
   font-size: 18px;
