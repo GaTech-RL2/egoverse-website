@@ -207,7 +207,7 @@ img{ max-width: 100%; height: auto; display:block; }
   border-radius: 14px;
   border: 1px solid var(--ink-10);
   background: var(--paper-75);
-  color: var(--ink);
+  color: var(--accent-dark);
   font-weight: 750;
 }
 
@@ -254,6 +254,16 @@ h1{
   font-size: clamp(34px, 4vw, 54px);
   line-height: 1.02;
   margin: 0 0 12px;
+}
+.hero-title-line{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-title-icon{
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: middle;
 }
 .hero-tagline{
   display: block;
