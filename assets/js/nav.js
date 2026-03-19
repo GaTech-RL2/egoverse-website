@@ -15,8 +15,11 @@
     },
     links: [
       { label: 'Dataset', href: 'dataset.html' },
-      { label: 'Code', href: 'code.html' }
     ],
+    code: {
+      label: 'Code ↗',
+      href: 'https://github.com/GaTech-RL2/EgoVerse'
+    },
     hardware: {
       label: 'Hardware',
       items: [
@@ -46,6 +49,10 @@
 
       <nav class="nav" id="primary-nav" data-nav>
         ${nav.links.map(link => `<a href="${prefix}${link.href}">${link.label}</a>`).join('\n        ')}
+
+      <a href="${nav.code.href}" target="_blank" rel="noopener noreferrer">
+        ${nav.code.label}
+      </a>
 
         <div class="dropdown" data-dropdown>
           <button class="btn btn-muted" data-dropdown-btn aria-expanded="false">${nav.hardware.label} ▾</button>
