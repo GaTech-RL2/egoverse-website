@@ -375,7 +375,7 @@ h1{
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  object-position: 50% 0%;
+  object-position: bottom;
   display:block;
   border: 0;
   background: var(--ink-06);
