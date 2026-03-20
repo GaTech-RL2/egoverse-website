@@ -387,6 +387,9 @@ h1{
   border: 0;
   background: var(--ink-06);
 }
+.video-tile video.eth-top-crop{
+  object-position: 50% 0%;
+}
 
 .video-tile .caption{
   padding: 12px 12px 14px;
