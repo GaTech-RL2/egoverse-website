@@ -14,7 +14,6 @@
       logo: 'assets/img/egoverse-mark.svg'
     },
     links: [
-      { label: 'Dataset', href: 'dataset.html' },
       { label: 'Research', href: 'assets/pdf/EgoVerse.pdf' }
     ],
     hardware: {

@@ -394,6 +394,40 @@ h1{
 .video-tile .caption strong{ display:block; margin-bottom: 4px; }
 .video-tile .caption span{ color: var(--muted); font-size: 13px; }
 
+/* Homepage dataset overview section (two side-by-side blocks) */
+.dataset-overview-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.dataset-overview-card{
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper-65);
+  box-shadow: 0 10px 30px var(--ink-08);
+  overflow: hidden;
+}
+.dataset-overview-video{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border: 0;
+  background: var(--ink-06);
+}
+.dataset-overview-card .caption{
+  padding: 12px 12px 14px;
+}
+.dataset-overview-card .caption strong{
+  display: block;
+  margin-bottom: 4px;
+}
+.dataset-overview-card .caption span{
+  color: var(--muted);
+  font-size: 13px;
+}
+
 /* Logo marquee / continuous scrolling strip */
 .logo-marquee{
   border: none;
@@ -889,6 +923,7 @@ h1{
 @media (max-width: 980px){
   .hero-grid{ grid-template-columns: 1fr; }
   .hero-video{ height: 360px; }
+  .dataset-overview-grid{ grid-template-columns: 1fr; }
   .video-grid{ grid-template-columns: 1fr; }
   .logo-marquee-group{ gap: 16px; }
   .logo-marquee-item{ padding: 8px 0; }
