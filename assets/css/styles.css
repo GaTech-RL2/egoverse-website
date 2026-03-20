@@ -358,9 +358,10 @@ h1{
 
 /* Video gallery */
 .video-grid{
-  display:grid;
+  display:flex;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+  overflow-x: auto;
 }
 .video-tile{
   border: 1px solid var(--line);
@@ -372,6 +373,7 @@ h1{
 .video-tile video, .video-tile iframe{
   width: 100%;
   height: 220px;
+  object-fit: cover;
   display:block;
   border: 0;
   background: var(--ink-06);
@@ -381,6 +383,28 @@ h1{
 }
 .video-tile .caption strong{ display:block; margin-bottom: 4px; }
 .video-tile .caption span{ color: var(--muted); font-size: 13px; }
+
+.dataset-video-tile {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper-65);
+  box-shadow: 0 10px 30px var(--ink-08);
+  overflow: hidden;
+  height: fit-content;
+}
+
+.dataset-video-tile img {
+  width: 100%;
+  height: auto;   /* ✅ key fix */
+  display: block;
+}
+
+.dataset-video-tile iframe,
+.dataset-video-tile video {
+  width: 100%;
+  height: auto;   /* instead of 220px */
+  aspect-ratio: 16 / 9; /* optional if needed */
+}
 
 /* Globe + Stats Grid */
 .globe-stats-grid{

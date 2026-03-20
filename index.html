@@ -34,20 +34,20 @@
 
         <div class="hero-card">
           <!-- Option A: self-hosted video -->
-          <video class="hero-video" autoplay muted loop playsinline poster="./assets/img/hero-poster.jpg">
+          <!-- <video class="hero-video" autoplay muted loop playsinline poster="./assets/img/hero-poster.jpg">
             <source src="./assets/video/coalition.mp4" type="video/mp4" />
-          </video>
+          </video> -->
 
-          <!-- Option B: embed instead (recommended). Uncomment and remove the <video> block above.
-          <iframe class="hero-video" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=1"
-            title="EgoVerse coalition video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          -->
-
+          <!-- Option B: embed instead (recommended). Uncomment and remove the <video> block above. -->
+          <iframe class="hero-video" src="https://partners.mecka.ai/egoverse"
+            title="EgoVerse Dataset Preview"></iframe>
+         
+<!-- 
           <div class="hero-meta">
             <span class="pill">Coalition montage</span>
             <span class="pill">Cross-lab capture</span>
             <span class="pill">Robot evaluation</span>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -62,8 +62,8 @@
 
         <div class="video-grid">
           <div class="video-tile">
-            <video muted controls playsinline>
-              <source src="./assets/videos/object_in_container.mp4" type="video/mp4" />
+            <video class="robo-video" muted controls playsinline autoplay="True">
+              <source src="./assets/videos/object_in_container.mp4" type="video/mp4"/>
             </video>
             <div class="caption">
               <strong>Georgia Tech (RL2)</strong>
@@ -72,8 +72,8 @@
           </div>
 
           <div class="video-tile">
-            <video muted controls playsinline>
-              <source src="./assets/videos/cup_on_saucer_silent.mp4" type="video/mp4" />
+            <video class="robo-video" muted controls playsinline autoplay="True">
+              <source src="./assets/videos/cup_on_saucer_silent.mp4" type="video/mp4" playbackRate="2.0"/>
             </video>
             <div class="caption">
               <strong>Stanford University (REAL Lab)</strong>
@@ -82,14 +82,25 @@
           </div>
 
           <div class="video-tile">
-            <video muted controls playsinline>
-              <source src="./assets/videos/bag_groceries.mp4" type="video/mp4" />
+            <video class="robo-video" muted controls playsinline autoplay="True">
+              <source src="./assets/videos/bag_groceries.mp4" type="video/mp4" playbackRate="2.0"/>
             </video>
             <div class="caption">
               <strong>UC San Diego (Wang Lab)</strong>
               <span>Task: bag-grocery • long-horizon</span>
             </div>
           </div>
+
+          <div class="video-tile">
+            <video class="robo-video" muted controls playsinline autoplay="True">
+              <source src="./assets/videos/eth_video_silent.mp4" type="video/mp4" playbackRate="2.0"/>
+            </video>
+            <div class="caption">
+              <strong>ETH (CVG Lab)</strong>
+              <span>Task: bag-grocery • long-horizon</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -148,5 +159,14 @@
   <script src="https://unpkg.com/globe.gl"></script>
   <script src="./assets/data/globe-locations.js"></script>
   <script src="./assets/js/globe.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const vids = document.getElementsByClassName("robo-video");
+
+    for (let v of vids) {
+      v.playbackRate = 2.0;
+    }
+  });
+</script>
 </body>
 </html>
