@@ -394,6 +394,51 @@ h1{
 .video-tile .caption strong{ display:block; margin-bottom: 4px; }
 .video-tile .caption span{ color: var(--muted); font-size: 13px; }
 
+/* Logo marquee / continuous scrolling strip */
+.logo-marquee{
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+  padding: 0;
+}
+.logo-marquee-track{
+  display: flex;
+  width: 100%;
+  animation: none;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.logo-marquee-group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+.logo-marquee-item{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height: 64px;
+  padding: 0;
+}
+.logo-marquee-item img{
+  height: 52px;
+  width: auto;
+  display:block;
+  object-fit: contain;
+  opacity: 1;
+}
+
+/* Slight per-logo sizing for visual balance */
+.logo-ucsd{ height: 40px !important; }
+.logo-mecka{ height: 60px !important; }
+.logo-stanford{ height: 60px !important; }
+.logo-eth{ height: 62px !important; }
+.logo-meta{ height: 34px !important; }
+
 .dataset-video-tile {
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -845,6 +890,14 @@ h1{
   .hero-grid{ grid-template-columns: 1fr; }
   .hero-video{ height: 360px; }
   .video-grid{ grid-template-columns: 1fr; }
+  .logo-marquee-group{ gap: 16px; }
+  .logo-marquee-item{ padding: 8px 0; }
+  .logo-marquee-item img{ height: 36px; }
+  .logo-ucsd{ height: 28px !important; }
+  .logo-mecka{ height: 42px !important; }
+  .logo-stanford{ height: 42px !important; }
+  .logo-eth{ height: 44px !important; }
+  .logo-meta{ height: 24px !important; }
   .grid-3{ grid-template-columns: 1fr; }
   .stats{ grid-template-columns: repeat(2, 1fr); }
   .section-head{ flex-direction: column; align-items:flex-start; }
