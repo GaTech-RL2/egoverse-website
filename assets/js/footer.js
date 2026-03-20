@@ -8,8 +8,6 @@
     email: 'contact@egoverse.ai',
     links: [
       { label: 'Home', href: 'index.html' },
-      { label: 'Dataset', href: 'dataset.html' },
-      { label: 'Code', href: 'code.html' },
       { label: 'Team', href: 'team.html' }
     ]
   };

@@ -22,35 +22,63 @@
           <p class="lede">
             EgoVerse is an ecosystem for curating, accessing, and learning from human data for robot learning. It hosts a "living" dataset, continuously expanded by the <a href="./team.html">consortium</a>, and driven by a research community advancing rigorous studies of human-to-robot transfer across tasks and embodiments.
           <div class="row">
-            <a class="btn btn-join" href="./dataset.html#access">Dataset browser <span class="arrow">→</span></a>
-            <a class="btn" href="./code.html">Install + Code</a>
+            <a class="btn btn-join" href="https://partners.mecka.ai/egoverse">Dataset browser <span class="arrow">→</span></a>
+            <a class="btn" href="https://github.com/GaTech-RL2/EgoVerse">Github</a>
             <a class="btn" href="./team.html">The Consortium</a>
           </div>
           <p class="paper-link">
-            <a href="REPLACE_WITH_PAPER_URL" target="_blank" rel="noopener">Read the EgoVerse Paper →</a>
+            <a href="./assets/pdf/EgoVerse.pdf" target="_blank" rel="noopener">Read the EgoVerse Paper →</a>
           </p>
 
-          <p class="small" style="margin-top:12px;">
-            Replace the hero video with a “coalition” montage that shows cross-lab and industry capture setups,
-            plus robot rollouts.
-          </p>
         </div>
 
         <div class="hero-card">
           <!-- Option A: self-hosted video -->
-          <video class="hero-video" autoplay muted loop playsinline poster="./assets/img/hero-poster.jpg">
+          <!-- <video class="hero-video" autoplay muted loop playsinline poster="./assets/img/hero-poster.jpg">
             <source src="./assets/video/coalition.mp4" type="video/mp4" />
-          </video>
+          </video> -->
 
-          <!-- Option B: embed instead (recommended). Uncomment and remove the <video> block above.
-          <iframe class="hero-video" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=1"
-            title="EgoVerse coalition video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          -->
-
+          <!-- Option B: embed instead (recommended). Uncomment and remove the <video> block above. -->
+          <iframe class="hero-video" src="https://partners.mecka.ai/egoverse"
+            title="EgoVerse Dataset Preview"></iframe>
+         
+<!-- 
           <div class="hero-meta">
             <span class="pill">Coalition montage</span>
             <span class="pill">Cross-lab capture</span>
             <span class="pill">Robot evaluation</span>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Dataset annotation + overview videos -->
+    <section class="section" style="padding-top:20px;">
+      <div class="container">
+        <div class="section-head">
+          <h2>What EgoVerse Captures</h2>
+          <p class="muted">Dense annotations and diverse task coverage</p>
+        </div>
+
+        <div class="dataset-overview-grid">
+          <div class="dataset-overview-card">
+            <video class="dataset-overview-video" muted controls playsinline autoplay loop>
+              <source src="./assets/videos/dense-language-overlay.mp4" type="video/mp4" />
+            </video>
+            <div class="caption">
+              <strong>Ready for Policy Learning</strong>
+              <span>Includes accurate camera poses, 3D head tracking, and dense language annotation.</span>
+            </div>
+          </div>
+
+          <div class="dataset-overview-card">
+            <video class="dataset-overview-video" muted controls playsinline autoplay loop>
+              <source src="./assets/videos/DatasetOverview.mp4" type="video/mp4" />
+            </video>
+            <div class="caption">
+              <strong>Standardized and Open-Ended Tasks</strong>
+              <span>EgoVerse contains standardized flagship tasks alongside open-ended scenarios across diverse tasks, scenes, objects, and operators.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -60,24 +88,24 @@
     <section class="section">
       <div class="container">
         <div class="section-head">
-          <h2>Real-World Evaluations</h2>
-          <p class="muted">By Partner Institutes</p>
+          <h2>Built for Human-to-Robot Transfer</h2>
+          <p class="muted">Validated across diverse robot embodiments and tasks</p>
         </div>
 
         <div class="video-grid">
           <div class="video-tile">
-            <video muted controls playsinline poster="./assets/img/placeholder.jpg">
-              <source src="./assets/video/eval_partner_1.mp4" type="video/mp4" />
+            <video class="robo-video" muted controls playsinline autoplay="True">
+              <source src="./assets/videos/object_in_container.mp4" type="video/mp4"/>
             </video>
             <div class="caption">
-              <strong>Georgia Tech (RL2)</strong>
+              <strong>Georgia Tech (RL2 Lab)</strong>
               <span>Task: object-in-container • ID/OOD</span>
             </div>
           </div>
 
           <div class="video-tile">
-            <video muted controls playsinline poster="./assets/img/placeholder.jpg">
-              <source src="./assets/video/eval_partner_2.mp4" type="video/mp4" />
+            <video class="robo-video" muted controls playsinline autoplay="True">
+              <source src="./assets/videos/cup_on_saucer_silent.mp4" type="video/mp4" playbackRate="2.0"/>
             </video>
             <div class="caption">
               <strong>Stanford University (REAL Lab)</strong>
@@ -86,19 +114,64 @@
           </div>
 
           <div class="video-tile">
-            <video muted controls playsinline poster="./assets/img/placeholder.jpg">
-              <source src="./assets/video/eval_partner_3.mp4" type="video/mp4" />
+            <video class="robo-video" muted controls playsinline autoplay="True">
+              <source src="./assets/videos/bag_groceries.mp4" type="video/mp4" playbackRate="2.0"/>
             </video>
             <div class="caption">
               <strong>UC San Diego (Wang Lab)</strong>
               <span>Task: bag-grocery • long-horizon</span>
             </div>
           </div>
+
+          <div class="video-tile">
+            <video class="robo-video" muted controls playsinline autoplay="True">
+              <source src="./assets/videos/eth_video_silent.mp4" type="video/mp4" playbackRate="2.0"/>
+            </video>
+            <div class="caption">
+              <strong>ETH Zurich (CVG & SRL Labs)</strong>
+              <span>Task: bag-grocery • long-horizon</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Consortium / Partners Logos -->
+    <section class="section" style="padding: 28px 0 42px;">
+      <div class="container">
+        <div class="section-head">
+          <h2>Consortium Partners</h2>
+          <p class="muted">Collaborating labs and organizations</p>
         </div>
 
-        <p class="small" style="margin-top:10px;">
-          If you want 6–9 tiles, duplicate the blocks. Keep a fixed aspect ratio and consistent titles.
-        </p>
+        <div class="logo-marquee" aria-label="Consortium partner logos">
+          <div class="logo-marquee-track">
+            <div class="logo-marquee-group">
+              <div class="logo-marquee-item">
+                <img src="./assets/logos/gt.png" alt="Georgia Tech" />
+              </div>
+              <div class="logo-marquee-item">
+                <img src="./assets/logos/stanford.png" alt="Stanford" class="logo-stanford" />
+              </div>
+              <div class="logo-marquee-item">
+                <img src="./assets/logos/ucsd.png" alt="UC San Diego" class="logo-ucsd" />
+              </div>
+              <div class="logo-marquee-item">
+                <img src="./assets/logos/eth.png" alt="ETH" class="logo-eth" />
+              </div>
+              <div class="logo-marquee-item">
+                <img src="./assets/logos/mecka.jpg" alt="Mecka AI" class="logo-mecka" />
+              </div>
+              <div class="logo-marquee-item">
+                <img src="./assets/logos/scale.png" alt="Scale AI" />
+              </div>
+              <div class="logo-marquee-item">
+                <img src="./assets/logos/meta.png" alt="Meta" class="logo-meta" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -156,5 +229,14 @@
   <script src="https://unpkg.com/globe.gl"></script>
   <script src="./assets/data/globe-locations.js"></script>
   <script src="./assets/js/globe.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const vids = document.getElementsByClassName("robo-video");
+
+    for (let v of vids) {
+      v.playbackRate = 2.0;
+    }
+  });
+</script>
 </body>
 </html>
