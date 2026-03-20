@@ -15,6 +15,7 @@
     },
     links: [
       { label: 'Dataset', href: 'dataset.html' },
+      { label: 'Research', href: 'assets/pdf/EgoVerse.pdf' }
     ],
     hardware: {
       label: 'Hardware',
