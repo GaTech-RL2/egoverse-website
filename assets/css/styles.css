@@ -520,6 +520,31 @@ h1{
   object-fit: contain;
 }
 
+@media (max-width: 768px) {
+  .aria-layout {
+    flex-direction: column;   /* key fix */
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .aria-video {
+    margin-left: 0;           /* remove push-right */
+    flex: none;               /* remove fixed flex basis */
+    width: 100%;
+  }
+
+  .aria-video video {
+    width: 100%;
+    height: auto;
+    max-height: none;         /* optional, avoids tiny video */
+  }
+
+  .aria-text ul {
+    padding-left: 20px;
+    line-height: 1.6;
+  }
+}
+
 /* Globe + Stats Grid */
 .globe-stats-grid{
   display: grid;
