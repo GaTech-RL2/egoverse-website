@@ -370,6 +370,13 @@ h1{
   box-shadow: 0 10px 30px var(--ink-08);
   overflow:hidden;
 }
+.video-tile img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
 .video-tile video, .video-tile iframe{
   width: 100%;
   height: auto;
@@ -398,7 +405,7 @@ h1{
 
 .dataset-video-tile img {
   width: 100%;
-  height: auto;   /* ✅ key fix */
+  height: auto;
   display: block;
 }
 
