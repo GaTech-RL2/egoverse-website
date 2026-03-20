@@ -11,41 +11,80 @@
   <script src="./assets/js/nav.js"></script>
 
   <main>
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Dataset</h2>
-          <p class="muted">What’s in the release, how it is structured, and how to access it.</p>
-        </div>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Dataset Details</h2>
+      </div>
 
-        <div class="card" id="access">
-          <h3>Access</h3>
-          <p>
-            Put your official links here. Keep these buttons prominent.
-          </p>
-          <div class="row">
-            <a class="btn btn-join" href="REPLACE_WITH_DATASET_BROWSER_URL">Dataset browser <span class="arrow">→</span></a>
-            <a class="btn" href="REPLACE_WITH_GITHUB_REPO_URL">GitHub codebase</a>
-            <a class="btn" href="REPLACE_WITH_PAPER_URL">Paper</a>
-          </div>
-          <p class="small" style="margin-top:10px;">
-            If access is gated, link to an access request form and state expected approval criteria.
-          </p>
-        </div>
-
-        <div class="card" style="margin-top:14px;">
-          <h3>Signals and annotations</h3>
-          <p>
-            Egocentric RGB video, head motion, 3D hand pose signals, and task descriptions, with annotation density
-            differing across components.
-          </p>
-          <p class="small">
-            Replace with your exact schema bullets and a link to the dataset spec in the repo.
-          </p>
+      <!-- Access -->
+      <div class="card" id="access">
+        <h3>Access</h3>
+        <div class="row">
+          <a class="btn btn-join" href="https://partners.mecka.ai/egoverse">
+            Dataset browser <span class="arrow">→</span>
+          </a>
         </div>
       </div>
-    </section>
-  </main>
+
+      <!-- Egocentric RGB Video -->
+      <div class="card dataset-block">
+        <h3>Egocentric RGB Video</h3>
+        <p class="muted">
+          First-person RGB recordings capturing fine-grained manipulation tasks from the wearer’s perspective.
+        </p>
+
+        <div class="video-grid">
+          <div class="video-tile">
+            <img src="./assets/img/Egocentric_1.png"/>
+          </div>
+          <div class="video-tile">
+            <img src="./assets/img/Egocentric_2.png"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Hand Pose Signals -->
+      <div class="card dataset-block">
+        <h3>3D Hand Pose Signals</h3>
+        <p class="muted">
+          High-frequency 3D joint trajectories capturing detailed hand articulation and interaction.
+        </p>
+
+        <div class="video-grid">
+          <div class="video-tile">
+            <video muted loop playsinline autoplay>
+              <source src="./assets/videos/pose1.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-tile">
+            <video muted loop playsinline autoplay>
+              <source src="./assets/videos/pose2.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Descriptions -->
+      <div class="card dataset-block">
+        <h3>Task Descriptions</h3>
+        <p class="muted">
+          Natural language annotations describing task goals, structure, and execution stages across varying horizons.
+        </p>
+
+        <div class="video-grid">
+          <div class="video-tile">
+            <img src="./assets/img/EgoVerse Verbs.png"/>
+          </div>
+          <div class="video-tile">
+            <img src="./assets/img/EgoVerse Annotations.png" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
 
   <footer class="footer"></footer>
 
