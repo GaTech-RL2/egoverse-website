@@ -22,7 +22,7 @@
         { label: 'Project Aria Gen2 (Coming Soon)', href: null, disabled: true }
       ]
     },
-    team: { label: 'Team', href: 'team.html' }
+    team: { label: 'The Consortium', href: 'team.html' }
   };
 
   function buildNav() {
