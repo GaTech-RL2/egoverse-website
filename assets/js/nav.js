@@ -13,9 +13,6 @@
       tagline: 'Egocentric human data for robot learning',
       logo: 'assets/img/egoverse-mark.svg'
     },
-    links: [
-      { label: 'Research', href: 'assets/pdf/EgoVerse.pdf' }
-    ],
     hardware: {
       label: 'Hardware',
       items: [
@@ -44,8 +41,7 @@
       </button>
 
       <nav class="nav" id="primary-nav" data-nav>
-        ${nav.links.map(link => `<a href="${prefix}${link.href}">${link.label}</a>`).join('\n        ')}
-
+       
         <div class="dropdown" data-dropdown>
           <button class="btn btn-muted" data-dropdown-btn aria-expanded="false">${nav.hardware.label} ▾</button>
           <div class="dropdown-menu" role="menu">
