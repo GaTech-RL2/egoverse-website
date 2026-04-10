@@ -107,7 +107,7 @@ const TEAM_DATA = {
           "title": "Core contributors",
           "members": [
             { "name": "Sebastiano Oliani" },
-            { "name": "Wenkai Xuan"}
+            { "name": "Wenkai Xuan"},
             { "name": "Chenyu Yang" },
             { "name": "Xi Wang" }
           ]
