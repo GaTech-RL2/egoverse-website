@@ -20,7 +20,7 @@ const TEAM_DATA = {
             { "name": "Lawrence Y. Zhu" },
             { "name": "Patcharapong Aphiwetsa" },
             { "name": "Baoyu Li" },
-            { "name": "Aniketh Chuleva" },
+            { "name": "Aniketh Cheluva" },
             { "name": "Pranav Kuppili" },
             { "name": "Yangcen Liu" },
             { "name": "Dhruv Patel" },
