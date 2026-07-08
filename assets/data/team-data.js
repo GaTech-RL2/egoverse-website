@@ -164,6 +164,24 @@ const TEAM_DATA = {
       ]
     },
     {
+      "name": "MicroAGI",
+      "website": "https://www.microagi.ai/",
+      "websiteLabel": "microagi.ai",
+      "roles": []
+    },
+    {
+      "name": "Lightwheel",
+      "website": "https://lightwheel.ai/",
+      "websiteLabel": "lightwheel.ai",
+      "roles": []
+    },
+    {
+      "name": "Trace Labs",
+      "website": "https://www.linkedin.com/company/tracelabsai/",
+      "websiteLabel": "linkedin.com/company/tracelabsai",
+      "roles": []
+    },
+    {
       "name": "Individual Contributors",
       "roles": [
         {
