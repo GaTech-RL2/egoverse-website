@@ -475,6 +475,9 @@ h1{
 .logo-stanford{ height: 60px !important; }
 .logo-eth{ height: 62px !important; }
 .logo-meta{ height: 34px !important; }
+.logo-microagi{ height: 30px !important; }
+.logo-lightwheel{ height: 30px !important; }
+.logo-trace{ height: 46px !important; }
 
 .dataset-video-tile {
   border: 1px solid var(--line);
@@ -961,6 +964,9 @@ h1{
   .logo-stanford{ height: 42px !important; }
   .logo-eth{ height: 44px !important; }
   .logo-meta{ height: 24px !important; }
+  .logo-microagi{ height: 21px !important; }
+  .logo-lightwheel{ height: 21px !important; }
+  .logo-trace{ height: 32px !important; }
   .grid-3{ grid-template-columns: 1fr; }
   .stats{ grid-template-columns: repeat(2, 1fr); }
   .section-head{ flex-direction: column; align-items:flex-start; }
